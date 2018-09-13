@@ -8,7 +8,8 @@ char* phoneBook[]={"+79090907098", //Санек
                    "+79090907097", //Санек
                    "+79227573311", //Коля Б.
                    "+79080421879", //Паша Ц.
-                   "+79058317954"}; //Женя С.
+                   "+79058317954", //Женя С.
+                   "+79514656663"}; // Женя К.
 
 AltSoftSerial altSerial;
 String str_1  = "", number  = "";
@@ -19,7 +20,6 @@ void setup() {
   altSerial.begin(9600);
   altSerial.println("Hello World");
   pinMode(12, OUTPUT);
-  timer_init_ISR_1Hz(TIMER_DEFAULT);
   
 }
 void loop() {
@@ -62,9 +62,10 @@ void response_on_dial()
       
       bool numberExists = false;
       for(int i = 0; i < sizeof(phoneBook) - 1; i++){
-        Serial.println(phoneBook[i]);
+        
         if(number == phoneBook[i]){
           numberExists = true;
+          Serial.println(phoneBook[i]);
           break;
         }
       }
